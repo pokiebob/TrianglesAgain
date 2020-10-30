@@ -13,9 +13,20 @@ public class Triangle {
     v3 = new Point(x3, y3);
   }
 
+  public static double distance(double x1, double y1, double x2, double y2) {
+    return Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+  }
+
+  public double getPerimeter() {
+    return distance(v1.getX(), v1.getY(), v2.getX(), v3.getY()) + distance(v2.getX(), v2.getY(), v3.getX(), v3.getY()) + distance(v3.getX(), v3.getY(), v1.getX(), v1.getY());
+  }
+
   public static void main(String[] args) {
     Triangle tri1 = new Triangle( new Point(-1, -1), new Point(0, 1), new Point(1 , -1));
     Triangle tri2 = new Triangle(-2, -2, 0, 2, 2, -3);
+
+    System.out.println(tri1.getPerimeter());
+    System.out.println(tri2.getPerimeter());
   }
 
 }
