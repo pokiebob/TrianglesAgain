@@ -27,7 +27,20 @@ public class Triangle {
             s * (s - distance(v1.getX(), v1.getY(), v2.getX(), v2.getY()))
              * (s - distance(v2.getX(), v2.getY(), v3.getX(), v3.getY()))
              * (s - distance(v3.getX(), v3.getY(), v1.getX(), v1.getY())));
-    }
+  }
+
+  public String classify() {
+      double side1 = (double) ( (int) (distance(v1.getX(), v1.getY(), v2.getX(), v2.getY()) * 10000) / 10000);
+      double side2 = (double) ( (int) (distance(v2.getX(), v2.getY(), v3.getX(), v3.getY()) * 10000) / 10000);
+      double side3 = (double) ( (int) (distance(v3.getX(), v3.getY(), v1.getX(), v1.getY()) * 10000) / 10000);
+      if (side1 == side2 || side1 == side3 || side2 == side3) {
+          if (side1 != side2 || side1 != side3 || side2 != side3) {
+              return "isosceles";
+          }
+          return "equilateral";
+      }
+      return "scalene";
+  }
 
   public static void main(String[] args) {
     Triangle tri1 = new Triangle( new Point(-1, -1), new Point(0, 1), new Point(1 , -1));
@@ -37,6 +50,8 @@ public class Triangle {
     System.out.println(tri2.getPerimeter());
     System.out.println(tri1.getArea());
     System.out.println(tri2.getArea());
+    System.out.println(tri1.classify());
+    System.out.println(tri2.classify());
   }
 
 }
