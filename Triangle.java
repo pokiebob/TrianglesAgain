@@ -21,12 +21,22 @@ public class Triangle {
     return distance(v1.getX(), v1.getY(), v2.getX(), v3.getY()) + distance(v2.getX(), v2.getY(), v3.getX(), v3.getY()) + distance(v3.getX(), v3.getY(), v1.getX(), v1.getY());
   }
 
+  public double getArea() {
+    double s = this.getPerimeter();
+    return Math.sqrt(
+            s * (s - distance(v1.getX(), v1.getY(), v2.getX(), v2.getY()))
+             * (s - distance(v2.getX(), v2.getY(), v3.getX(), v3.getY()))
+             * (s - distance(v3.getX(), v3.getY(), v1.getX(), v1.getY())));
+    }
+
   public static void main(String[] args) {
     Triangle tri1 = new Triangle( new Point(-1, -1), new Point(0, 1), new Point(1 , -1));
     Triangle tri2 = new Triangle(-2, -2, 0, 2, 2, -3);
 
     System.out.println(tri1.getPerimeter());
     System.out.println(tri2.getPerimeter());
+    System.out.println(tri1.getArea());
+    System.out.println(tri2.getArea());
   }
 
 }
