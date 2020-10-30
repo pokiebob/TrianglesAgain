@@ -42,6 +42,12 @@ public class Triangle {
       return "scalene";
   }
 
+  public String toString() {
+    return String.format("v1(%f,%f) ", v1.getX(), v1.getY())
+     + String.format("v2(%f,%f) ", v2.getX(), v2.getY())
+      + String.format("v3(%f,%f)", v3.getX(), v3.getY());
+  }
+
   public static void main(String[] args) {
     Triangle tri1 = new Triangle( new Point(-1, -1), new Point(0, 1), new Point(1 , -1));
     Triangle tri2 = new Triangle(-2, -2, 0, 2, 2, -3);
@@ -52,6 +58,8 @@ public class Triangle {
     System.out.println(tri2.getArea());
     System.out.println(tri1.classify());
     System.out.println(tri2.classify());
+    System.out.println(tri1.toString());
+    System.out.println(tri2.toString());
   }
 
 }
