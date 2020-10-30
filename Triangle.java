@@ -48,6 +48,16 @@ public class Triangle {
       + String.format("v3(%f,%f)", v3.getX(), v3.getY());
   }
 
+  public void setVertex(int index, Point newP) {
+    if (index == 0) {
+      v1 = newP;
+    } else if (index == 1) {
+      v2 = newP;
+    } else {
+      v3 = newP;
+    }
+  }
+
   public static void main(String[] args) {
     Triangle tri1 = new Triangle( new Point(-1, -1), new Point(0, 1), new Point(1 , -1));
     Triangle tri2 = new Triangle(-2, -2, 0, 2, 2, -3);
@@ -58,6 +68,10 @@ public class Triangle {
     System.out.println(tri2.getArea());
     System.out.println(tri1.classify());
     System.out.println(tri2.classify());
+    System.out.println(tri1.toString());
+    System.out.println(tri2.toString());
+    tri1.setVertex(0, new Point(33, 66));
+    tri2.setVertex(2, new Point(-234, 3));
     System.out.println(tri1.toString());
     System.out.println(tri2.toString());
   }
