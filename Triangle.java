@@ -13,26 +13,22 @@ public class Triangle {
     v3 = new Point(x3, y3);
   }
 
-  public static double distance(double x1, double y1, double x2, double y2) {
-    return Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
-  }
-
   public double getPerimeter() {
-    return distance(v1.getX(), v1.getY(), v2.getX(), v3.getY()) + distance(v2.getX(), v2.getY(), v3.getX(), v3.getY()) + distance(v3.getX(), v3.getY(), v1.getX(), v1.getY());
+    return v1.distanceTo(v2) + v2.distanceTo(v3) + v3.distanceTo(v1);
   }
 
   public double getArea() {
-    double s = this.getPerimeter();
+    double s = this.getPerimeter() / 2;
     return Math.sqrt(
-            s * (s - distance(v1.getX(), v1.getY(), v2.getX(), v2.getY()))
-             * (s - distance(v2.getX(), v2.getY(), v3.getX(), v3.getY()))
-             * (s - distance(v3.getX(), v3.getY(), v1.getX(), v1.getY())));
+            s * (s - v1.distanceTo(v2))
+             * (s - v2.distanceTo(v3))
+             * (s - v3.distanceTo(v1)));
   }
 
   public String classify() {
-      double side1 = (double) ( (int) (distance(v1.getX(), v1.getY(), v2.getX(), v2.getY()) * 10000) / 10000);
-      double side2 = (double) ( (int) (distance(v2.getX(), v2.getY(), v3.getX(), v3.getY()) * 10000) / 10000);
-      double side3 = (double) ( (int) (distance(v3.getX(), v3.getY(), v1.getX(), v1.getY()) * 10000) / 10000);
+      double side1 = (double) ( (int) (v1.distanceTo(v2) * 10000) / 10000);
+      double side2 = (double) ( (int) (v2.distanceTo(v3) * 10000) / 10000);
+      double side3 = (double) ( (int) (v3.distanceTo(v1) * 10000) / 10000);
       if (side1 == side2 || side1 == side3 || side2 == side3) {
           if (side1 != side2 || side1 != side3 || side2 != side3) {
               return "isosceles";

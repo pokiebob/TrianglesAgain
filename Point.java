@@ -21,9 +21,21 @@ public class Point{
     return y;
   }
 
+  public double distanceTo(Point other) {
+    return Math.sqrt((other.getX() - x) * (other.getX() - x) + (other.getY() - y) * (other.getY() - y));
+  }
+
+  public boolean equals(Point other) {
+    return x == other.getX() && y == other.getY();
+  }
+
   public static void main(String[] args) {
     // Point pnt = new Point(0, 0);
+    // Point pnt2 = new Point(2, 0);
     // System.out.println(pnt.getX());
+    // System.out.println(pnt.distanceTo(pnt2));
+    // System.out.println(pnt.equals(pnt2));
+    // System.out.println(pnt.equals(pnt));
   }
 
 }
