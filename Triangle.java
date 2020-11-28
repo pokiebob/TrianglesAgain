@@ -26,9 +26,9 @@ public class Triangle {
   }
 
   public String classify() {
-      double side1 = (double) ( (int) (v1.distanceTo(v2) * 10000) / 10000);
-      double side2 = (double) ( (int) (v2.distanceTo(v3) * 10000) / 10000);
-      double side3 = (double) ( (int) (v3.distanceTo(v1) * 10000) / 10000);
+      double side1 = ((double) Math.round(v1.distanceTo(v2) * 10000)) / 10000;
+      double side2 = ((double) Math.round(v2.distanceTo(v3) * 10000)) / 10000;
+      double side3 = ((double) Math.round(v3.distanceTo(v1) * 10000)) / 10000;
       if (side1 == side2 || side1 == side3 || side2 == side3) {
           if (side1 != side2 || side1 != side3 || side2 != side3) {
               return "isosceles";
@@ -39,9 +39,9 @@ public class Triangle {
   }
 
   public String toString() {
-    return String.format("v1(%f,%f) ", v1.getX(), v1.getY())
-     + String.format("v2(%f,%f) ", v2.getX(), v2.getY())
-      + String.format("v3(%f,%f)", v3.getX(), v3.getY());
+    return "v1(" + v1.getX() + ", " + v1.getY() + ") "
+     + "v2(" + v2.getX() + ", " + v2.getY() + ") "
+      + "v3(" + v3.getX() + ", " + v3.getY() + ")";
   }
 
   public void setVertex(int index, Point newP) {
@@ -55,21 +55,21 @@ public class Triangle {
   }
 
   public static void main(String[] args) {
-    Triangle tri1 = new Triangle( new Point(-1, -1), new Point(0, 1), new Point(1 , -1));
-    Triangle tri2 = new Triangle(-2, -2, 0, 2, 2, -3);
+    // Triangle tri1 = new Triangle( new Point(-1, -1), new Point(0, 1), new Point(1 , -1));
+    // Triangle tri2 = new Triangle(-2, -2, 0, 2, 2, -3);
 
-    System.out.println(tri1.getPerimeter());
-    System.out.println(tri2.getPerimeter());
-    System.out.println(tri1.getArea());
-    System.out.println(tri2.getArea());
-    System.out.println(tri1.classify());
-    System.out.println(tri2.classify());
-    System.out.println(tri1.toString());
-    System.out.println(tri2.toString());
-    tri1.setVertex(0, new Point(33, 66));
-    tri2.setVertex(2, new Point(-234, 3));
-    System.out.println(tri1.toString());
-    System.out.println(tri2.toString());
+    // System.out.println(tri1.getPerimeter());
+    // System.out.println(tri2.getPerimeter());
+    // System.out.println(tri1.getArea());
+    // System.out.println(tri2.getArea());
+    // System.out.println(tri1.classify());
+    // System.out.println(tri2.classify());
+    // System.out.println(tri1.toString());
+    // System.out.println(tri2.toString());
+    // tri1.setVertex(0, new Point(33, 66));
+    // tri2.setVertex(2, new Point(-234, 3));
+    // System.out.println(tri1.toString());
+    // System.out.println(tri2.toString());
   }
 
 }
